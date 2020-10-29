@@ -2,7 +2,9 @@
     <div>
     <div class="top-row">
       <div class="top part">
-        <div class="robot-name"> {{ selectedRobot.head.title }}</div>
+        <div class="robot-name"> {{ selectedRobot.head.title }}
+          <span class="sale" v-if="selectedRobot.head.onSale">Sale!</span>
+        </div>
         <img :src="selectedRobot.head.src" title="head"/>
         <button @click="selectPreviousHead()" class="prev-selector">&#9668;</button>
         <button @click="selectNextHead()" class="next-selector">&#9658;</button>
@@ -220,6 +222,9 @@ export default {
   top: -25px;
   text-align: center;
   width: 100%;
+}
+.sale {
+  color: red;
 }
 
 </style>
