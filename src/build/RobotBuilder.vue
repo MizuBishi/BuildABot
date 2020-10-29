@@ -2,7 +2,7 @@
     <div class="content">
       <button class="add-to-cart" @click="addToCart()">Add to Cart</button>
     <div class="top-row">
-      <div class="top part">
+      <div :class="[saleBorderClass, 'top', 'part']">
         <div class="robot-name"> {{ selectedRobot.head.title }}
           <span class="sale" v-if="selectedRobot.head.onSale">Sale!</span>
         </div>
@@ -82,6 +82,12 @@ export default {
     };
   },
   computed: {
+    saleBorderClass() {
+      return this.selectedRobot.head.onSale && 'sale-border';
+    },
+    headBorderStyle() {
+      return { border: this.selectedRobot.head.onSale ? '3px solid red' : '3px solid grey'}
+    },
     selectedRobot() {
       return {
         head: availableParts.heads[this.selectedHeadIndex],
@@ -97,7 +103,7 @@ export default {
       const robot = this.selectedRobot;
       const cost = robot.head.cost + robot.leftArm.cost + robot.torso.cost
         + robot.rightArm.cost + robot.base.cost;
-      this.cart.push(Object.assign(robot, cost));
+      this.cart.push({ ...robot, cost });
       console.log(this.cart);
     },
     selectNextHead() {
@@ -154,7 +160,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped lang="scss">
 .content {
   position: relative;
 }
@@ -163,9 +169,9 @@ export default {
   width:165px;
   height:165px;
   border: 3px solid #aaa;
-}
-.part img {
-  width:165px;
+  img {
+    width:165px;
+  } 
 }
 .top-row {
   display:flex;
@@ -269,5 +275,8 @@ td, th {
 }
 .cost {
   text-align: right;
+}
+.sale-border {
+border: 3px solid red;
 }
 </style>

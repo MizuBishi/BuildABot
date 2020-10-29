@@ -3,14 +3,15 @@ module.exports = {
   env: {
     node: true,
     browser: true,
-    es6: true,
+    es6: true
   },
-  extends: ['plugin:vue/essential', '@vue/airbnb', 'eslint:recommended'],
+  extends: ['plugin:vue/essential', 'eslint:recommended', 'plugin:vue/base'],
+
   parserOptions: {
-    parser: 'babel-eslint',
+    parser: 'babel-eslint'
   },
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-  },
-};
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off'
+  }
+}
