@@ -57,6 +57,7 @@
 
 <script>
 import availableParts from '../data/parts';
+import createdHookMixind from './created-hook-mixin'
 
 function getPreviousValidIndex(index, length) {
   const deprecatedIndex = index - 1;
@@ -81,6 +82,7 @@ export default {
       selectedBaseIndex: 0,
     };
   },
+  mixins: [createdHookMixind],
   computed: {
     saleBorderClass() {
       return this.selectedRobot.head.onSale && 'sale-border';
