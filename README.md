@@ -1,5 +1,5 @@
 # build-a-bot
-
+Vue.js Fundamentals: https://www.pluralsight.com/
 ## Project setup
 ```
 yarn install
